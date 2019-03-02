@@ -2,7 +2,8 @@ get_stage("before_install") %>%
   add_code_step(update.packages(ask = FALSE))
 
 get_stage("install") %>%
-  add_code_step(remotes::install_deps(dependencies = TRUE))
+  add_code_step(remotes::install_deps(dependencies = TRUE)) %>%
+  add_step(step_install_github("mlr-org/mlr3"))
 
 get_stage("deploy") %>%
   add_code_step(
