@@ -11,7 +11,7 @@ Furthermore, [mlr3learners](https://mlr3learners.mlr-org.com) has some documenta
 
 Analogously to `mlr3::mlr_tasks`, the `mlr3::Dictionary` `mlr3::mlr_learners` can be queried for available learners:
 
-```{r}
+```{r 03-learners-1}
 mlr_learners
 as.data.table(mlr_learners)
 ```
@@ -25,7 +25,7 @@ As listed in the output, each learner comes with the following annotations:
 * `predict_types`: what predict types are possible. E.g., a classification learner can predict labels ("response") or probabilities ("prob")
 
 To extract a specific learner, use the corresponding "id":
-```{r}
+```{r 03-learners-2}
 learner = mlr_learners$get("classif.rpart")
 learner
 ```
@@ -33,19 +33,19 @@ As the printer shows, all information from the previous table is also accessible
 Additionally, `predict_type` returns the currently selected predict type of the learner.
 
 The field `param_set` stores a description of hyperparameter settings:
-```{r}
+```{r 03-learners-3}
 learner$param_set
 ```
 The set of hyperparamter values is stored inside the parameter set in the field `values`.
 By assigning a named list to this field, we change the active hyperparameters of the learner:
-```{r}
+```{r 03-learners-4}
 learner$param_set$values = list(cp = 0.01)
 learner
 ```
 
 The field `model` stores the result of the training step.
 As we have not yet learned a model, this is `NULL`:
-```{r}
+```{r 03-learners-5}
 learner$model
 ```
 
@@ -54,23 +54,23 @@ learner$model
 Is recommended to train the learner via the `mlr3::Experiment` class, we only train the learner here directly to showcase more of its API.
 
 First, we retrieve the "iris" task from the `mlr3::mlr_tasks` dictionary, and then apply the train method on the complete task.
-```{r}
+```{r 03-learners-6}
 task = mlr_tasks$get("iris")
 learner$train(task)
 ```
 The learner returns itself, the fitted model is stored in the field "model":
-```{r}
+```{r 03-learners-7}
 learner$model
 ```
 
 Next, we generate predictions on the complete iris data set:
-```{r}
+```{r 03-learners-8}
 predictions = learner$predict(task)
 ```
 The returned `mlr3::PredictionClassif` object stores the predicted labels ("response") as well as the true labels ("truth").
 
 By simply counting the number of correct predictions and dividing by the number of observations, we can calculate the accuracy:
-```{r}
+```{r 03-learners-9}
 tab = as.data.table(predictions)
 mean(tab$response == tab$truth)
 ```
