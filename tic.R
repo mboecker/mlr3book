@@ -1,15 +1,5 @@
-get_stage("before_install") %>%
-  add_code_step(update.packages(ask = FALSE))
-
-get_stage("install") %>%
-  add_code_step(remotes::install_deps(dependencies = TRUE))
-
 get_stage("deploy") %>%
-  add_code_step(
-    add_step(step_install_github("mlr-org/mlr3")) %>%
-    bookdown::render_book('index.Rmd', 'bookdown::gitbook'),
-    prepare_call = remotes::install_github("rstudio/bookdown", dependencies = c("Depends", "Imports"))
-  )
+    add_step(step_bookdown())
 
 if (Sys.getenv("id_rsa") != "") {
   # pkgdown documentation can be built optionally. Other example criteria:
