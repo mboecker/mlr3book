@@ -1,5 +1,5 @@
 get_stage("deploy") %>%
-    add_step(step_build_bookdown(""))
+    add_step(step_build_bookdown(input = ""))
 
 if (Sys.getenv("id_rsa") != "") {
   # pkgdown documentation can be built optionally. Other example criteria:
