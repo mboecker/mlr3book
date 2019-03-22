@@ -1,4 +1,4 @@
-get_stage("deploy") %>%
+get_stage("script") %>%
     add_step(step_build_bookdown(input = ""))
 
 if (Sys.getenv("id_rsa") != "") {
