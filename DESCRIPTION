@@ -1,32 +1,31 @@
-Package: mlr3book
 Type: Package
+Package: mlr3book
 Title: R package to build the mlr3 book via bookdown
 Version: 0.1
 Authors@R:
-    c(person(given = "Michel",
-             family = "Lang",
-             role = c("cre", "aut"),
-             email = "michellang@gmail.com",
-             comment = c(ORCID = "0000-0001-9754-0393")))
-Description: Use this package to install all dependencies and additional
-    helper files required to build the mlr3 book.
+    person(given = "Michel",
+           family = "Lang",
+           role = c("cre", "aut"),
+           email = "michellang@gmail.com",
+           comment = c(ORCID = "0000-0001-9754-0393"))
+Description: Use this package to install all dependencies and
+    additional helper files required to build the mlr3 book.
+License: MIT + file LICENSE
 Imports:
     bookdown,
-    servr,
     checkmate,
     data.table,
     mlr3,
-    withr
-Suggests:
     mlr3db,
+    mlr3ordinal,
     mlr3survival,
-    mlr3ordinal
+    servr,
+    withr
 Remotes:
     mlr-org/mlr3,
     mlr-org/mlr3db,
-    mlr-org/mlr3survival,
-    mlr-org/mlr3ordinal
+    mlr-org/mlr3ordinal,
+    mlr-org/mlr3survival
 Encoding: UTF-8
-License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
