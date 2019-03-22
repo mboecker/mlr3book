@@ -1,3 +1,10 @@
 ^\.travis\.yml$
+<<<<<<< HEAD
 ^.*\.Rproj$
 ^\.Rproj\.user$
+=======
+^inst/bookdown/_book
+^inst/bookdown/_bookdown_files
+^.editorconfig$
+^.ignore$
+>>>>>>> master

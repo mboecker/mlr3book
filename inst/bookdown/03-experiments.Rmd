@@ -1,4 +1,4 @@
-# Experiments
+# Experiments {#experiments}
 
 In this introduction, we fit a single classification tree on the iris and determine the mean misclassification error.
 
@@ -13,37 +13,54 @@ First, we need to generate the following `mlr3` objects from the task dictionary
     ```
 2. A learner for the classification tree
     ```{r}
+    library(mlr3)
     learner = mlr_learners$get("classif.rpart")
     ```
 
 ## Index vector for train/test splits
 
-We opt to learn on $\frac{4}{5}$ of all available observations and predict on the remaining $\frac{1}{5}$ observations.
+We opt to learn on 80% of all available observations and predict on the remaining 20% observations.
 For this purpose, we create two index vectors:
 
+<<<<<<< HEAD:04-experiments.Rmd
 ```{r 04-experiments-1}
 train.set = sample(task$nrow, 4/5 * task$nrow)
 test.set = setdiff(seq_len(task$nrow), train.set)
+=======
+```{r}
+train_set = sample(task$nrow, 0.8 * task$nrow)
+test_set = setdiff(seq_len(task$nrow), train_set)
+>>>>>>> master:inst/bookdown/03-experiments.Rmd
 ```
 
 ## Setting up an experiment
 
 The process of fitting a machine learning model, predicting on test data and scoring the predictions by comparing predicted and true labels is called an experiment.
-For this reason, we start by initializing an `Experiment` object:
+For this reason, we start by initializing a new `Experiment` object by passing the created `r ref("TaskClassif")` and `r ref("LearnerClassif")`:
 
 ```{r 04-experiments-2}
 e = Experiment$new(task = task, learner = learner)
 print(e)
 ```
 
-The printer shows a summary of the state of the experiment, which is currently `[defined]` and includes the task and the learner.
+The printer shows a summary of the state of the experiment, which is currently in the state "defined" which basically means that the task and the learner are stored, but nothing else happened so far.
+By querying the state, the ordered factor levels tell us the other possible states of an experiment:
+```{r}
+e$state
+```
+
 
 ## Training
 
 To train the learner on the task, we need to call the train function of the experiment:
 
+<<<<<<< HEAD:04-experiments.Rmd
 ```{r 04-experiments-3}
 e$train(row_ids = train.set)
+=======
+```{r}
+e$train(row_ids = train_set)
+>>>>>>> master:inst/bookdown/03-experiments.Rmd
 print(e)
 ```
 
@@ -58,8 +75,13 @@ print(rpart.model)
 
 After the training step, we can use the experiment to predict on observations of the task (note that you may alternatively also pass new data here as `data.frame`):
 
+<<<<<<< HEAD:04-experiments.Rmd
 ```{r 04-experiments-5}
 e$predict(row_ids = test.set)
+=======
+```{r}
+e$predict(row_ids = test_set)
+>>>>>>> master:inst/bookdown/03-experiments.Rmd
 print(e)
 ```
 
@@ -70,7 +92,8 @@ library(data.table)
 head(as.data.table(e$prediction))
 ```
 
-## Performance assessment
+
+### Performance assessment
 
 The last step of the experiment is quantifying the performance of the model by comparing the predicted labels with the true labels using a performance measure.
 The default measure for the iris classification task is the mean misclassification error, which is used here by default:
@@ -84,10 +107,15 @@ e$performance["classif.mmce"]
 
 The experiment is now "complete" which means we can access all of its methods.
 
-## Chaining methods
+### Chaining methods
 
 Instead of calling the methods `$train()`, `$predict()` and `$score()` one after each other, it is also possible to chain these commands:
 
+<<<<<<< HEAD:04-experiments.Rmd
 ```{r 04-experiments-8}
 Experiment$new(task = task, learner = learner)$train(train.set)$predict(test.set)$score()
+=======
+```{r}
+Experiment$new(task = task, learner = learner)$train(train_set)$predict(test_set)$score()
+>>>>>>> master:inst/bookdown/03-experiments.Rmd
 ```
