@@ -1,5 +1,9 @@
 # Building Blocks
 
+```{r, echo = FALSE}
+library("mlr3")
+```
+
 ## Tasks {#tasks}
 
 Learning tasks encapsulate the data set and additional meta information about a machine learning problem, for example the name of the target variable for supervised problems.
