@@ -6,20 +6,6 @@ Learning tasks encapsulate the data set and additional meta information about a 
 
 ### Task Types
 
-<!-- To manually create a task from a `r ref("base::data.frame()")` or `r ref("data.table()")`, you must first determine the task type to select the respective constructor: -->
-
-
-<!-- * Classification Task: Target column is labels (stored as `character()`/`factor()`) with only few distinct values. -->
-<!--   <br>$\Rightarrow$ `r ref("mlr3::TaskClassif")` -->
-<!-- * Regression Task: Target column is numeric (stored as `integer()`/`double()`). -->
-<!--   <br>$\Rightarrow$ `r ref("mlr3::TaskRegr")` -->
-<!-- * Survival Task: Target is the (right-censored) time to event. -->
-<!--   <br>$\Rightarrow$ `r ref("mlr3survival::TaskSurv")` in add-on package `r mlr_pkg("mlr3surival")` -->
-<!-- * Ordinal Regression Task: Target is ordinal. -->
-<!--   <br>$\Rightarrow$ `r ref("mlr3ordinal::TaskOrdinal")` in add-on package `r mlr_pkg("mlr3ordinal")` -->
-<!-- * Cluster Task: You don't have a target but want to identify similarities in the feature space. -->
-<!--   <br>$\Rightarrow$ Not yet implemented -->
-
 
 ### Task Creation
 
@@ -34,10 +20,6 @@ str(data)
 
 Next, we create the task by providing the following information:
 
-<!-- 1. `id`: identifier for the task, used in plots and summaries. -->
-<!-- 2. `backend`: here, we simply provide the `data.frame()` which is internally converted to a `r ref("DataBackendDataTable")`. -->
-<!--    For more fine-grain control over how the data is stored internally, we could also construct a `r ref("DataBackend")` manually. -->
-<!-- 3. `target`: Column name of the target column for the regression problem. -->
 
 ```{r 02-tasks-3}
 task_mtcars = TaskRegr$new(id = "cars", backend = data, target = "mpg")
@@ -50,7 +32,6 @@ The `print()` method gives a short summary of the task: It has `r task_mtcars$nr
 ### Predefined tasks
 
 `mlr3` ships with some predefined machine learning tasks.
-<!-- These are stored in a `r ref("Dictionary")`, which is a simple key-value store named `mlr3::mlr_tasks`. -->
 We can obtain a summarizing overview of all stored tasks by converting the dictionary to a `data.table()`
 ```{r 02-tasks-4}
 as.data.table(mlr_tasks)
@@ -64,7 +45,6 @@ print(task_iris)
 ```
 
 ### Task API
-<!-- The task properties and characteristics can be queried using the task's public member values and methods (see `r ref("Task")`). -->
 Most of them should be self-explanatory, e.g.,
 
 ```{r 02-tasks-6}

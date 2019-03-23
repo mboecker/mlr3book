@@ -30,7 +30,6 @@ test_set = setdiff(seq_len(task$nrow), train_set)
 ## Setting up an experiment
 
 The process of fitting a machine learning model, predicting on test data and scoring the predictions by comparing predicted and true labels is called an experiment.
-<!-- For this reason, we start by initializing a new `Experiment` object by passing the created `r ref("TaskClassif")` and `r ref("LearnerClassif")`: -->
 
 ```{r 04-experiments-2}
 e = Experiment$new(task = task, learner = learner)
