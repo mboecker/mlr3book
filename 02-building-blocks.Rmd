@@ -12,7 +12,7 @@ Learning tasks encapsulate the data set and additional meta information about a 
 
 ### Task Types
 
-To manually create a task from a `r ref("base::data.frame()")` or `r ref("data.table()")`, you must first determine the task type to select the respective constructor:
+<!-- To manually create a task from a `r ref("base::data.frame()")` or `r ref("data.table()")`, you must first determine the task type to select the respective constructor: -->
 
 
 <!-- * Classification Task: Target column is labels (stored as `character()`/`factor()`) with only few distinct values. -->
