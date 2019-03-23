@@ -2,6 +2,7 @@
 
 ```{r, echo = FALSE}
 library("mlr3")
+library("data.table")
 ```
 
 ## Tasks {#tasks}
@@ -112,7 +113,6 @@ Now, we want the original `rownames()` of `mtcars` to be a regular feature colum
 Thus, we first pre-process the `data.frame` and then re-create the task.
 
 ```{r 02-tasks-11}
-library("data.table")
 # with `keep.rownames`, data.table stores the row names in an extra column "rn"
 data = as.data.table(mtcars[, 1:3], keep.rownames = TRUE)
 task = TaskRegr$new(id = "cars", backend = data, target = "mpg")
