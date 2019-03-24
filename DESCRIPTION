@@ -17,6 +17,7 @@ Imports:
     data.table,
     mlr3,
     mlr3db,
+    mlr3misc,
     mlr3ordinal,
     mlr3survival,
     servr,
@@ -24,6 +25,7 @@ Imports:
 Remotes:
     mlr-org/mlr3,
     mlr-org/mlr3db,
+    mlr-org/mlr3misc,
     mlr-org/mlr3ordinal,
     mlr-org/mlr3survival
 Encoding: UTF-8
