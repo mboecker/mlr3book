@@ -2,6 +2,7 @@
 
 ```{r, echo = FALSE}
 library("mlr3")
+library("mlr3misc")
 library("data.table")
 ```
 
