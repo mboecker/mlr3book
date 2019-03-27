@@ -6,7 +6,19 @@ sudo: false
 cache: packages
 latex: true
 pandoc_version: 2.5
+before_install:
+- R -q -e 'if (!requireNamespace("remotes")) install.packages("remotes")'
+- R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
+- R -q -e 'remotes::install_github("ropenscilabs/tic@bookdown"); tic::prepare_all_stages()'
 
-after_success:
+script:
   - R CMD INSTALL "${PKG_TARBALL}"
   - Rscript -e 'mlr3book::render_mlr3book()'
+
+before_deploy: R -q -e 'tic::before_deploy()'
+deploy:
+  provider: script
+  script: R -q -e 'tic::deploy()'
+  on:
+    all_branches: true
+
