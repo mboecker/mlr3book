@@ -12,6 +12,6 @@ if (Sys.getenv("id_rsa") != "") {
     add_step(step_setup_ssh())
 
   get_stage("deploy") %>%
-    add_step(step_build_bookdown("", new_session = TRUE)) %>%
+    add_step(step_build_bookdown("")) %>%
     add_step(step_push_deploy(path = "_book", branch = "gh-pages"))
 }
