@@ -1,3 +1,7 @@
+get_stage("install") %>%
+  add_step(step_install_deps())
+
+
 if (Sys.getenv("id_rsa") != "") {
   # pkgdown documentation can be built optionally. Other example criteria:
   # - `inherits(ci(), "TravisCI")`: Only for Travis CI
@@ -8,5 +12,6 @@ if (Sys.getenv("id_rsa") != "") {
     add_step(step_setup_ssh())
 
   get_stage("deploy") %>%
+    add_step(step_build_bookdown("bookdown")) %>%
     add_step(step_push_deploy(path = "_book", branch = "gh-pages"))
 }
