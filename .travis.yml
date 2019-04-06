@@ -11,10 +11,6 @@ before_install:
 - R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
 - R -q -e 'remotes::install_github("ropenscilabs/tic@bookdown"); tic::prepare_all_stages()'
 
-script:
-  - R CMD INSTALL "${PKG_TARBALL}"
-  - Rscript -e 'mlr3book::render_mlr3book()'
-
 before_deploy: R -q -e 'tic::before_deploy()'
 deploy:
   provider: script
