@@ -58,7 +58,7 @@ bmr$aggregated(objects = FALSE)
 We can aggregate it further, i.e. if we are interested which learner performed best over all tasks:
 
 ```{r}
-bmr$aggregated(objects = FALSE)[, list(acc = mean(classif.acc), auc = mean(classif.auc)), by = "learner_id"]
+# bmr$aggregated(objects = FALSE)[, list(acc = mean(classif.acc), auc = mean(classif.auc)), by = "learner_id"]
 ```
 
 Unsurprisingly, the classification tree outperformed the featureless learner.
