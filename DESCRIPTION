@@ -25,6 +25,7 @@ Suggests:
     mlr3db,
     mlr3survival,
     mlr3ordinal,
+    rpart,
     servr
 Remotes:
     mlr-org/mlr3,
