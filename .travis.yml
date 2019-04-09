@@ -6,6 +6,8 @@ sudo: false
 cache: packages
 latex: true
 pandoc_version: 2.5
+r: 3.5.2
+
 before_install:
   - R -q -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")'
   - R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl", quietly = TRUE)) install.packages("curl")'
