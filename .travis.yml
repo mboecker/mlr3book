@@ -11,7 +11,7 @@ before_install:
 - R -q -e 'if (getRversion() < "3.2" && !requireNamespace("curl")) install.packages("curl")'
 - R -q -e 'remotes::install_github("ropenscilabs/tic@bookdown"); tic::prepare_all_stages()'
 
-script: true
+script: 'tic::script()'
 
 before_deploy: R -q -e 'tic::before_deploy()'
 deploy:
