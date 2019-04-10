@@ -19,6 +19,8 @@ Imports:
     rprojroot,
     withr
 Suggests:
+    callr,
+    evaluate,
     kernlab,
     mlbench,
     mlr3misc,
