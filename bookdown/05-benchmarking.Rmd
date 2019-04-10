@@ -8,6 +8,7 @@ The interface of the `benchmark()` function accepts a design of tasks, learners,
 
 Here, we call `benchmark()` to perform a single holdout split on a single task and two learners:
 ```{r 05-benchmarking-1}
+library(mlr3)
 library(data.table)
 design = data.table(
   task = mlr_tasks$mget("iris"),
