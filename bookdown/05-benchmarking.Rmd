@@ -59,7 +59,7 @@ bmr$aggregated(objects = FALSE)
 We can aggregate it further, i.e. if we are interested which learner performed best over all tasks:
 
 ```{r 05-benchmarking-4}
-bmr$aggregated(objects = FALSE)[, list(acc = mean(classif.acc), auc = mean(classif.auc)), by = "learner_id"]
+#bmr$aggregated(objects = FALSE)[, list(acc = mean(classif.acc), auc = mean(classif.auc)), by = "learner_id"]
 ```
 
 Unsurprisingly, the classification tree outperformed the featureless learner.
@@ -69,7 +69,7 @@ Unsurprisingly, the classification tree outperformed the featureless learner.
 As a `BenchmarkResult` object is basically a collection of multiple `ResampleResult` objects, we can extract specific `ResampleResult` objects using the stored hashes:
 
 ```{r 05-benchmarking-5}
-tab = bmr$aggregated(objects = FALSE)[task_id == "spam" & learner_id == "classif.rpart"]
+#tab = bmr$aggregated(objects = FALSE)[task_id == "spam" & learner_id == "classif.rpart"]
 print(tab)
 
 rr = bmr$resample_result(tab$hash)
