@@ -11,8 +11,6 @@ link-citations: yes
 
 # Prerequisites
 
-To get all required packages to run all examples in this book, install the `r gh_pkg("mlr-org/mlr3book")`  package using `r cran_pkg("remotes")`:
-
 ```{r index-1, eval=FALSE}
 remotes::install_github("mlr-org/mlr3book", dependencies = TRUE)
 ```
